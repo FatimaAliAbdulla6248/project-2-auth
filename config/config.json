@@ -1,6 +1,8 @@
 {
   "development": {
-    "database": "auth_boilerplate",
+    "username": "postgres",
+    "password": "fatima",
+    "database": "express-auth-boilerplate",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
