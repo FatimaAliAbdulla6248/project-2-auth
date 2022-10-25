@@ -8,6 +8,7 @@ require('dotenv').config()
 
 // MIDDLEWARE
 app.set('view engine', 'ejs')
+app.use(express.static('public'))
 app.use(ejsLayouts)
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}))
@@ -25,6 +26,8 @@ app.use(async (req, res, next)=>{
 
 // CONTROLLERS
 app.use('/users', require('./controllers/users'))
+app.use('/tickets', require('./controllers/tickets'))
+ 
 
 // ROUTES
 app.get('/', (req, res)=>{
@@ -32,5 +35,5 @@ app.get('/', (req, res)=>{
 })
 
 app.listen(8000, ()=>{
-    console.log('Project 2 Express Authentication')
+    console.log('FAA AIRLINES IS RUNNING !')
 })
