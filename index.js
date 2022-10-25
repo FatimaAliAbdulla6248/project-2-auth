@@ -30,9 +30,16 @@ app.use('/tickets', require('./controllers/tickets'))
  
 
 // ROUTES
+//If the user logged in >> it will open the tickets page (ticket.ejs)
 app.get('/', (req, res)=>{
-    res.render('home')
+    if(res.locals.user){
+        res.render('ticket')
+    }else{
+        res.render('home')
+    }
 })
+
+ 
 
 app.listen(8000, ()=>{
     console.log('FAA AIRLINES IS RUNNING !')
