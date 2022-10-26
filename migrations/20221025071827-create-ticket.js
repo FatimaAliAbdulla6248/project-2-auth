@@ -18,6 +18,9 @@ module.exports = {
       gatenumber: {
         type: Sequelize.STRING
       },
+      url: {
+        type: Sequelize.STRING
+      },
       seatnumber: {
         type: Sequelize.STRING
       },

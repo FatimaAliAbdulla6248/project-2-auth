@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     destination: DataTypes.STRING,
     gatenumber: DataTypes.STRING,
     seatnumber: DataTypes.STRING,
-    userId: DataTypes.STRING
+    userId: DataTypes.INTEGER,
+    url: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'ticket',

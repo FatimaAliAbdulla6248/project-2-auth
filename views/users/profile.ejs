@@ -1,5 +1,12 @@
 <h2>Hello, <%= user.email%> :)</h2>
 
-<h3>Your booking information </h3>
+<h2>Your booking information: </h2>
 
- 
+ <% userTickets.forEach(t => { %>
+
+<p><%= t.destination %>Destination</p>
+<p><%= t.gatenumber %>Gate Number </p>
+<p><%= t.seatnumber %>Seat Number</p>
+ </br>
+
+ <% }) %>

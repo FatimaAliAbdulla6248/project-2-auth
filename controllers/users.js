@@ -52,11 +52,57 @@ router.get('/logout', (req, res)=>{
     res.redirect('/')
 })
 
-router.get('/profile', (req, res)=>{
-    res.render('users/profile.ejs')
+router.get('/profile', async (req, res)=>{
+    let user = await db.user.findOne({
+        where: {id: res.locals.user.id}
+    })
+
+    const userTickets = await user.getTickets()
+    // console.log(getTickets)
+
+    // res.json(userTickets)
+
+    res.render('users/profile.ejs', {userTickets})
+})
+
+//<!-- <form action="/users/book/<%= ticket.id %>" method="post"> -->
+
+router.post('/book/:destinationName', async (req,res) => {
+    console.log('testing in progress...')
+    let user = await db.user.findOne({
+        where: {id: res.locals.user.id}
+    })
+
+    let ticket = await db.ticket.findOne({
+        where: {destination: req.params.destinationName}
+    })
+
+    await user.addTicket(ticket)
+
+    res.redirect('/')
+
+
+})
+
+//??????????????????????????????????
+router.get('/userProfile', async (req,res) => {
+
+    let user = await db.user.findOne({
+        where: {id: res.locals.user.id}
+    })
+
+    const userTickets = await user.getTickets()
+    // console.log(getTickets)
+
+    res.json(userTickets)
 })
 
 
-// router.get('/myTickets', ...)
+
+  
+
+
+
+ 
 
 module.exports = router
