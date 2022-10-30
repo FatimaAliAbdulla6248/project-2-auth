@@ -9,4 +9,8 @@
 <p><%= t.seatnumber %>Seat Number</p>
  </br>
 
- <% }) %>
+ <form method="POST" action="/users/<%= t.id %>?_method=DELETE">
+    <button type="submit">delete</button>
+</form>
+<% })  %>
+

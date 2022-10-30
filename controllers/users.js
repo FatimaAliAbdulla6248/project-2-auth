@@ -58,14 +58,12 @@ router.get('/profile', async (req, res)=>{
     })
 
     const userTickets = await user.getTickets()
-    // console.log(getTickets)
 
-    // res.json(userTickets)
 
     res.render('users/profile.ejs', {userTickets})
 })
 
-//<!-- <form action="/users/book/<%= ticket.id %>" method="post"> -->
+ 
 
 router.post('/book/:destinationName', async (req,res) => {
     console.log('testing in progress...')
@@ -84,7 +82,7 @@ router.post('/book/:destinationName', async (req,res) => {
 
 })
 
-//??????????????????????????????????
+//-----Add the tickets to the users profile-----
 router.get('/userProfile', async (req,res) => {
 
     let user = await db.user.findOne({
@@ -92,14 +90,37 @@ router.get('/userProfile', async (req,res) => {
     })
 
     const userTickets = await user.getTickets()
-    // console.log(getTickets)
+
 
     res.json(userTickets)
 })
 
+//-----Delete the booked ticket-----
+
+router.delete('/:ticketId', async (req,res) => {
+
+     
+    await db.ticket.destroy({
+        where: { id: req.params.ticketId}
+    })
+
+    //  let ticket = await db.ticket.findOrCreate({
+    //      where: {
+    //      id: req.params.ticketId
+    //  }})
+
+    //  let user = res.locals.user
+
+    // await user.removeTicket(ticket)
+
+    res.redirect('/users/profile')
+    
+ })
 
 
+ 
   
+
 
 
 
