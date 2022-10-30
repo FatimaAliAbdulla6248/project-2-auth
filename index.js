@@ -7,6 +7,7 @@ const cryptoJS = require('crypto-js')
 require('dotenv').config()
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const path = require('path');
 
 // MIDDLEWARE
 app.set('view engine', 'ejs')
@@ -16,6 +17,7 @@ app.use(bodyParser.json())
 app.use(ejsLayouts)
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}))
+app.use(express.static(path.join(__dirname, 'public')));
 
 // AUTHENTICATION MIDDLEWARE
 app.use(async (req, res, next)=>{
@@ -31,6 +33,7 @@ app.use(async (req, res, next)=>{
 // CONTROLLERS
 app.use('/users', require('./controllers/users'))
 app.use('/tickets', require('./controllers/tickets'))
+app.use('/rates', require('./controllers/rates'))
  
 
 // ROUTES
@@ -44,6 +47,16 @@ app.get('/', async (req, res)=>{
         res.render('home')
     }
 })
+
+
+
+app.get('/', function (req, res){
+     res.sendFile(path.join(__dirname, 'layout.ejs'));
+});
+
+
+
+
 
  
 

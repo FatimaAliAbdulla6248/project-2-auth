@@ -1,11 +1,11 @@
-<h2>Choose your destination</h2>
+<h2 style="color:white;">Choose your destination</h2>
 
 <% tickets.forEach(t => { %>
     
-     <img src="<%= t.url %>" style="width:200px;height:200px;"> </br>
+    <img src="<%= t.url %>" style="width:200px;height:200px;"> </br>
      <form action="/users/book/<%= t.destination %>" method="post">
      <p><%= t.destination %></p>
-         <button type="submit">Book now !</button></br>  
+         <button type="submit" >Book now !</button></br></br> 
      </form>
 
 <% }) %>

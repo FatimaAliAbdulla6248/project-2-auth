@@ -11,18 +11,19 @@
     <nav>
         <ul>
             <% if(user){ %>
-                <li><a href="/users/profile">Profile</a></li>
-                <li><a href="/">Booking page</a></li>
-                <li><a href="/users/logout">Logout</a></li>
+                <li><a style="color:white;" href="/users/profile">Profile</a></li>
+                <li><a style="color:white;" href="/">Booking page</a></li>
+                <li><a style="color:white;" href="/rates">Rating page</a></li>
+                <li><a style="color:white;" href="/users/logout">Logout</a></li>
                 
-            <% } else { %> 
-                <li><a href="/users/new">Sign Up</a></li>
-                <li><a href="/users/login">Login</a></li>
+            <% } else{ %> 
+                <li><a style="color:white;" href="/users/new">Sign Up</a></li>
+                <li><a style="color:white;" href="/users/login">Login</a></li>
                 
             <% } %>
         </ul>
     </nav>
-    <h1 style="text-align:center;">  &#9992 FAA AIRLINES &#9992 </h1>
+    <h1 style="text-align:center;color:white;">  &#9992 FAA AIRLINES &#9992 </h1>
      <%- body %>
     <style>
          p {  
