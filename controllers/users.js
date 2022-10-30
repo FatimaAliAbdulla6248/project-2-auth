@@ -100,22 +100,28 @@ router.get('/userProfile', async (req,res) => {
 router.delete('/:ticketId', async (req,res) => {
 
      
-    await db.ticket.destroy({
-        where: { id: req.params.ticketId}
+    await db.ticket.update(
+        {
+            userId:null
+        },
+        {
+        where: { 
+            id: req.params.ticketId,
+            userId:res.locals.user.id
+        }
+        
     })
-
-    //  let ticket = await db.ticket.findOrCreate({
-    //      where: {
-    //      id: req.params.ticketId
-    //  }})
-
-    //  let user = res.locals.user
-
-    // await user.removeTicket(ticket)
-
     res.redirect('/users/profile')
     
  })
+
+
+    
+
+
+     
+
+    
 
 
  

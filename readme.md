@@ -14,7 +14,7 @@
 ## Technologies used :Node.js / MySQL
 ## Wireframe
 ## EDRs
-## App routes : get / post /delete.
-## Unsolved problems:DELETE ROUTE IS NOT WORKING AS intended.
+## App routes : get / post /Update.
+## Unsolved problems:DELETE ROUTE IS NOT WORKING AS iNTENDED.
 
  
