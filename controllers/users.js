@@ -52,6 +52,23 @@ router.get('/logout', (req, res)=>{
     res.redirect('/')
 })
 
+// /users/newTicket
+
+router.get('/newTicket', async (req,res) => {
+    res.render('newTicket.ejs')
+})
+
+// form action="/users/createTicket" method="POST"
+
+router.post('/createTicket', async (req,res) => {
+    await db.ticket.create(req.body)
+    res.redirect('/')
+})
+
+
+
+
+
 router.get('/profile', async (req, res)=>{
     let user = await db.user.findOne({
         where: {id: res.locals.user.id}

@@ -4,8 +4,9 @@ const router = express.Router()
 const axios = require('axios')
 
 
-router.get('/', (req, res)=>{
-    res.render('rate.ejs')
+router.get('/', async (req, res)=>{
+    let ratings = await db.rate.findAll()
+    res.render('rate.ejs', { ratings })
 })
 
 
@@ -13,12 +14,14 @@ router.get('/', (req, res)=>{
 
 
 
-// router.post('/',async (req, res)=>{
-//     const [newComment, created] = await db.comment.findOrCreate
-//     await res.locals.user.addComment(newComment)
-//     res.render('/')
-    
-//})
+router.post('/',async (req, res)=>{
+    await db.rate.create(req.body)
+    res.redirect('/rates')
+    // let ratings = await db.rate.findAll()
+    // await res.locals.user.addComment(newComment)
+    // res.render('/rate', { ratings })   
+    // res.json({ ratings })   
+})
 
 
 // router.post('/:pokeId/new', async (req,res) => {
